@@ -57,6 +57,31 @@ class DoublyLinkedList:
         current.next=new_node
         new_node.prev=current
 
+    def insert_begining(self,data):
+        new_node=Node(data)
+        new_node.next=self.head
+        self.head=new_node
+
+    def insert_at_position(self,position,data):
+        if position==0:
+            self.insert_begining(data)
+            return
+        
+        new_node=Node(data)
+        current=self.head
+        count=0
+
+        while current and count<position-1:
+            current=current.next
+            count+=1
+
+        if current is None:
+            print("Position out of bounds")
+            return
+        
+        new_node.next=current.next
+        current.next=new_node
+
     def print_forward(self):
         current=self.head
 
@@ -86,6 +111,7 @@ Dl=DoublyLinkedList()
 Dl.append(2)
 Dl.append(3)
 Dl.append("T")
+Dl.insert_begining(4)
 
 Dl.print_forward()
 Dl.print_backward()
