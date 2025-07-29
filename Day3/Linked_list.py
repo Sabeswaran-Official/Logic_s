@@ -82,6 +82,43 @@ class DoublyLinkedList:
         new_node.next=current.next
         current.next=new_node
 
+    def delete_by_value(self,target):
+        if self.head is None:
+            print("List is empty")
+            return
+        elif self.head==target:
+            self.head=self.head.next
+            return
+        
+        current=self.head
+        while current.next and current.next.data !=target:
+            current=current.next
+        if current.next is None:
+            print("value is not found in the list")
+            return
+        else:
+            current.next=current.next.next
+
+    def delete_by_position(self,position):
+        if self.head is None:
+            print("List is empty")
+            return
+        elif position==0:
+            self.head=self.head.next
+            return
+        
+        current=self.head
+        count=0
+        while current and count<position-1:
+            current=current.next
+            count+=1
+
+        if current.next is None:
+            print("position out of bounds")
+        else:
+            current.next=current.next.next
+
+
     def print_forward(self):
         current=self.head
 
@@ -115,3 +152,7 @@ Dl.insert_begining(4)
 
 Dl.print_forward()
 Dl.print_backward()
+Dl.delete_by_value(2)
+Dl.print_forward()
+Dl.delete_by_position(2)
+Dl.print_forward()
