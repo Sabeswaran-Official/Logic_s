@@ -1,25 +1,20 @@
-# Ques : input : hello ;output: holle
-arr="hello"
-vowels=["a","e","i","o","u"]
-f=0
-l=0
-f_val=""
-l_val=""
-arr1=arr.split()
-for i in range(0,len(arr)):
-    if arr[i] in vowels:
-        f_val+=arr[i]
-        f+=i
-        print(f_val)
-        print(f)
-        break
-for j in range(len(arr)-1,0,-1):
-    if arr[j] in vowels:
-        l_val+=arr[j]
-        l+=(j-(len(arr)-1))
-        print(l_val)
-        print(l)
-        break
-
-
+'''# Ques : input : hello ;output: holle          
+def vow_swap(s):
     
+    s_list=list(s)
+    vowels=set("aeiouAEIOU")
+    i,j=0,len(s_list)-1
+
+    while i<j:
+        while i<j and s_list[i] not in vowels:
+            i+=1
+        while i<j and s_list[j] not in vowels:
+            j-=1
+
+        if i<j:
+            s_list[i],s_list[j]=s_list[j],s_list[i]
+            i+=1
+            j-=1
+    return "".join(s_list)
+print(vow_swap("zoho corporation"))       # output : zohi carporotoon  '''
+
