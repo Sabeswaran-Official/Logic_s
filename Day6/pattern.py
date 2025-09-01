@@ -55,13 +55,19 @@ output: 54321
         4321
         321
         21
-        1  '''
+        1  
 
-n=4
-for i in range(1,n+1):
+n=5
+for i in range(1,n+1,+1):
     print(" "*(n-i),end="")
-    for j in range(i,i+2):
+    for j in range(i,i*2,+1):
         print(j,end="")
-    for j in range(i+1,i,-1):
-        print(j,end="")
+    for j in range(2*i-2,i-1,-1):
+        print(j,end="")  
     print()
+    output :
+              1
+             232
+            34543
+           4567654
+          567898765   '''
