@@ -55,7 +55,7 @@ print(sol.solve([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
 
         ***   Generator Expression   ***
 all(x > 0 for x in nums) → checks if all numbers are positive.
-any(word == "hello" for word in words) → checks if "hello" exists in the list.   '''
+any(word == "hello" for word in words) → checks if "hello" exists in the list.   
 
 class Solution:
     def setZeros(self,matrix):
@@ -72,4 +72,60 @@ class Solution:
         print(first_col)
 
 sol=Solution()
-print(sol.setZeros([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
+print(sol.setZeros([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))   
+
+
+# 53.Maximum subarray
+
+# basic solution which takes more time / time complexity & more calculations
+def maxValue(arr):
+    if not arr:
+        return 0
+    
+    ans=arr[0]
+    for i in range(len(arr)):
+        cur_sum=0
+        for j in range(i,len(arr)):
+            cur_sum+=arr[j]
+            ans=max(ans,cur_sum)
+    return ans
+
+print(maxValue([1]))
+
+# also return the max subarray list with the max value
+def maxValue(arr):
+    if not arr:
+        return 0
+    
+    ans=arr[0]
+    best_start,best_end=0,0
+    for i in range(len(arr)):
+        cur_sum=0
+        for j in range(i,len(arr)):
+            cur_sum+=arr[j]
+            if cur_sum>ans:
+                ans=cur_sum
+                best_start,best_end=i,j
+     
+    print(f"max subarray list : {arr[best_start:best_end+1]}")
+    print(f"max value : {ans}")
+
+maxValue([-2,1,-3,4,-1,2,1,-5,4])          '''
+
+# Original solution ,which supports in leetcode
+# float('-inf')    -- in pyhon it represents thenegative infinity ;    −∞ means "smaller than any real number."
+
+class Solution:
+    def maxvalue(self, nums) :
+        ans=float('-inf')
+        cur_val=0
+        for num in nums:
+            cur_val+=num
+            if cur_val>ans:
+                ans=cur_val
+            if cur_val<0:
+                cur_val=0
+        return ans
+sol=Solution()
+
+print(sol.maxvalue([5,4,-1,7,8]))
