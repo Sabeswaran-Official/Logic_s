@@ -1,5 +1,5 @@
-# 73. Set matrix zeros
-
+# 73. Set matrix zeros  
+'''
 class Solution:
     def solve(self, matrix):
         m, n = len(matrix), len(matrix[0])
@@ -31,7 +31,7 @@ class Solution:
 sol = Solution()
 print(sol.solve([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
 
-'''
+
 class Solution:
     def solve(self,matrix):
         m=len(matrix)
@@ -110,7 +110,7 @@ def maxValue(arr):
     print(f"max subarray list : {arr[best_start:best_end+1]}")
     print(f"max value : {ans}")
 
-maxValue([-2,1,-3,4,-1,2,1,-5,4])          '''
+maxValue([-2,1,-3,4,-1,2,1,-5,4])          
 
 # Original solution ,which supports in leetcode
 # float('-inf')    -- in pyhon it represents thenegative infinity ;    −∞ means "smaller than any real number."
@@ -128,4 +128,50 @@ class Solution:
         return ans
 sol=Solution()
 
-print(sol.maxvalue([5,4,-1,7,8]))
+print(sol.maxvalue([5,4,-1,7,8]))      
+
+
+# maximum continous sub array
+
+# .zfill(width) -- its a string method which just add zeros in a free space of left side;usefull in brute force(fixed length guesses)
+for i in range(5):
+    print(str(i).zfill(3),end=" ")       output :  000 001 002 003 004 
+
+# 1668. Maximum Repeating Substring
+class maxReapeat:
+    def maxReapeatingSubstr(sequence,word):
+        count = 0
+        repeated = word
+        while repeated in sequence:
+            count += 1
+            repeated += word
+        return count
+mm=maxReapeat
+print(mm.maxReapeatingSubstr("cababab","ab"))
+'''
+# Solution below using re -regex expression  
+import re
+class maxReapeat:
+    def maxReapeatingSubstr(sequence,word):
+        matches=re.findall(word,sequence)
+        count=len(matches)
+        result="".join(matches)
+        return f"{count} & the substring is {result}"
+        
+        
+        # n=len(word)
+        
+        # ind=[]
+        # end=[]
+        # for match in re.finditer(word,sequence):
+        #     ind.append(match.start())
+        #     end.append(match.end())
+        
+        # x=ind[0]
+        
+        # if  count>1:
+        #     print(f" {sequence[x:count*n+(n%2)+1]} is a substring of {sequence} ")
+        
+        
+mm=maxReapeat
+print(mm.maxReapeatingSubstr("cabababa","ba"))
