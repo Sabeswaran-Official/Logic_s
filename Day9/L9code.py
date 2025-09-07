@@ -1,3 +1,4 @@
+
 # 394. Decode string
 class decStr:
     def solution(string):
@@ -21,3 +22,22 @@ class decStr:
             
 de=decStr
 print(de.solution("3[a2[c]]"))
+
+
+# Beauty flowers
+def solution(flowers):
+    n=len(flowers)
+    min_height=min(flowers)
+    max_height=max(flowers)
+    beauty=max_height-min_height
+    if max_height==min_height:
+        ways=n*(n-1)/n
+    else:
+        ways=flowers.count(min_height)*flowers.count(max_height)
+
+    return beauty,ways
+print(solution([2,2,2,4,4,6,2,6,8]))
+
+
+# 54. Spiral matrix
+
