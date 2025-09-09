@@ -79,7 +79,6 @@ prices=[7,2,1,6,3,8,4]
 def buySellStock(prices):
     min_price=float('inf')
     max_profit=0
-    print(min_price)
 
     for price in prices:
         min_price=min(min_price,price)

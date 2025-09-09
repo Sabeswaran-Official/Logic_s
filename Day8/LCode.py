@@ -1,5 +1,5 @@
-# 73. Set matrix zeros  
 '''
+# 73. Set matrix zeros  
 class Solution:
     def solve(self, matrix):
         m, n = len(matrix), len(matrix[0])
@@ -53,7 +53,7 @@ print(sol.solve([[0,1,2,0],[3,4,5,2],[1,3,1,5]]))
 
 
 
-        ***   Generator Expression   ***
+        # ***   Generator Expression   ***
 all(x > 0 for x in nums) → checks if all numbers are positive.
 any(word == "hello" for word in words) → checks if "hello" exists in the list.   
 
@@ -148,7 +148,7 @@ class maxReapeat:
         return count
 mm=maxReapeat
 print(mm.maxReapeatingSubstr("cababab","ab"))
-'''
+
 # Solution below using re -regex expression  
 import re
 class maxReapeat:
@@ -175,3 +175,4 @@ class maxReapeat:
         
 mm=maxReapeat
 print(mm.maxReapeatingSubstr("cabababa","ba"))
+'''
