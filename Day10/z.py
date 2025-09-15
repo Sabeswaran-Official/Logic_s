@@ -1,5 +1,6 @@
+
 # Segregate even & odd n a alternative position  input : [1,2,4,3,5,7,8,6]  ouput : [1,8,3,6,5,4,7,2]  -don't use external array.Do it in-place
-'''
+
 class EvenOdd:
     def solution(arr):
         arr.sort(key=lambda x:(x%2==0 ,-x if x%2==0 else x))
@@ -70,7 +71,7 @@ def wildCardMatching(s,p):
 
     return j==len(p)
 print(wildCardMatching( "cb","?a"))
-'''
+
 
 # Arange wave no's I/P   - [20, 40, 30, 50, 70, 80]  , O/P - [20, 40, 30, 70, 50, 80]    . Explanation :  a1 <= a2 >= a3 <= a4 >= a5....
 def solution(arr):
@@ -89,3 +90,27 @@ def solution(arr):
         i+=1;j+=1
     return arr
 print(solution([20, 40, 30, 50, 70, 80]))
+
+
+# String -1st occurance ;integer -last occurance
+str="abc23c4d32"
+def solution(str):
+    result=[]
+    last_occ = {}
+    for i, ch in enumerate(str):
+        if ch.isdigit():
+            last_occ[ch] = i
+
+    seen_alpha=set()
+    for i,ch in enumerate(str):
+        if ch.isalpha():
+            if ch not in seen_alpha:
+                result.append(ch)
+                seen_alpha.add(ch)
+
+        else:
+            if i==last_occ[ch]:
+                result.append(ch)
+
+    return "".join(result)
+print(solution(str))
