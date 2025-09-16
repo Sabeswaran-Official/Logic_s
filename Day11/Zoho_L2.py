@@ -1,5 +1,5 @@
 # Sept-12 questions
-'''
+
 # 1.Spiral matrix   - input:[[1,2,3],[4,5,6],[7,8,9]]  ;output: [123698745] 
 def solution(matrix):
     m=len(matrix)
@@ -28,31 +28,35 @@ def solution(matrix):
     return result
 print(solution([[1,2,3],[4,5,6],[7,8,9]]))   
 
-# 2.pattern printing   -  output:       1
+''' 2.pattern printing   -  output:       1
                                       4 3 2
                                     9 8 7 6 5
                                 16 15 14 13 12 11 10
                                 16 15 14 13 12 11 10
                                     9 8 7 6 5
                                       4 3 2
-                                        1                      '''
+                                        1         '''             
 def solution(n):
-    num=1
-    for i in range(1,n+1):
-        count=2*i-1
-        temp=[]
-        while num>0:
-            for i in range(count):
-                temp.append(num)
-                num+=1
-        return temp
+    spaces={1:8,2:6,3:4,4:0}
+    for i in range(1, n + 1):
+        start = (i - 1) ** 2 + 1
+        end = i ** 2
+        
+        # Collect numbers in descending order
+        line = [str(x) for x in range(end, start - 1, -1)]
+        # Print with spacing for a pyramid shape
+        space=spaces.get(i)
+        print(" " *space+ " ".join(line))
+    for i in range(n,0,-1):
+
+        start=i**2
+        end=start-(i+i//2)
+        line=[str(i) for i in range(start,end-1,-1)]
+        space=spaces.get(i)
+        print(" "*space+" ".join(line))
 
 print(solution(4))
 
-        
-
-
-'''
 #3. decimal to binary number
 # with in-built function
 def deci_Binary(n):
@@ -142,8 +146,33 @@ def solution(s, wordDict):
 
 
 print(solution("IlikeSamsung", {"I", "like", "Samsung","Sam", "sung", "man", "go", "mango"}))
-'''
 
+# pattern printing          
+def solution(n):
+    spaces={1:11,2:9,3:7,4:3,5:0}
+    num=1
+    res=[]
+    for i in range(1,n+1):
+        temp=[]
+        for j in range(1,i*2):
+            temp.append(num)
+            num+=1
+        space=spaces.get(i)
+        res.append(" "*space+" ".join(map(str,temp[::-1])))
+    
+    for i in range(n, 0, -1):
+        space = spaces.get(i, 0)
+        # extract numbers again for symmetry
+        start = (i - 1) ** 2 + 1
+        end = i ** 2
+        temp = list(range(start, end + 1))[::-1]
+        space=spaces.get(i)
+        res.append(" " * space + " ".join(map(str, temp)))
+
+    return res
+for row in solution(2):
+    print(row)
+        
 
 
 
