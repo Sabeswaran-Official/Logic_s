@@ -36,11 +36,18 @@ print(solution([[1,2,3],[4,5,6],[7,8,9]]))
                                     9 8 7 6 5
                                       4 3 2
                                         1                      '''
-# def solution(n):
-#     num=1
-#     for i in range(1,n+1):
-#        count=2*i-1
-#        temp=[]
+def solution(n):
+    num=1
+    for i in range(1,n+1):
+        count=2*i-1
+        temp=[]
+        while num>0:
+            for i in range(count):
+                temp.append(num)
+                num+=1
+        return temp
+
+print(solution(4))
 
         
 
