@@ -1,4 +1,5 @@
 # Sept-12 questions
+'''
 # 1.Spiral matrix   - input:[[1,2,3],[4,5,6],[7,8,9]]  ;output: [123698745] 
 def solution(matrix):
     m=len(matrix)
@@ -26,20 +27,25 @@ def solution(matrix):
             left+=1
     return result
 print(solution([[1,2,3],[4,5,6],[7,8,9]]))   
+
+# 2.pattern printing   -  output:       1
+                                      4 3 2
+                                    9 8 7 6 5
+                                16 15 14 13 12 11 10
+                                16 15 14 13 12 11 10
+                                    9 8 7 6 5
+                                      4 3 2
+                                        1                      '''
+# def solution(n):
+#     num=1
+#     for i in range(1,n+1):
+#        count=2*i-1
+#        temp=[]
+
+        
+
+
 '''
-# 2.pattern printing   -  output:        1
-                                       4 3 2
-                                     9 8 7 6 5
-                                16 15 14 13 12 11 10
-                                16 15 14 13 12 11 10
-                                     9 8 7 6 5
-                                       4 3 2
-                                         1                      
-
-def print_diamond(n):
-    
-    num = 1  '''
-
 #3. decimal to binary number
 # with in-built function
 def deci_Binary(n):
@@ -96,6 +102,40 @@ def solution(arr):
 print(solution([1,3,2,1,2,4,1]))
 
 # 6.String segmentation badesd on dictionary of strings
+# {"I","like","Sam","sung","samsung","man","go","mango"}  ;input:"Ilike","IlikeSamsung" ,output:: I like ,I like Samsung
+
+def solution(s, wordDict):
+    memo = {}
+
+    def backtrack(start):
+        # If we reached the end successfully
+        if start == len(s):
+            return []
+
+        # If result already computed
+        if start in memo:
+            return memo[start]
+
+        # Try the longest word first by going backwards from end
+        for end in range(len(s), start, -1):
+            word = s[start:end]
+            if word in wordDict:
+                res = backtrack(end)
+                if res is not None:
+                    memo[start] = [word] + res
+                    return memo[start]
+
+        memo[start] = None
+        return None
+
+    result = backtrack(0)
+    if result is None:
+        return None
+    return " ".join(result)
+
+
+print(solution("IlikeSamsung", {"I", "like", "Samsung","Sam", "sung", "man", "go", "mango"}))
+'''
 
 
 
