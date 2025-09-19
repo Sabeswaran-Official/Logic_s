@@ -55,11 +55,16 @@ print(solution([1,5,2,6,4,6,3,7,9,8]))
 '''
 #3. sum based on frequency ,input:12341  ,output: 1-->9 ,2-->2         ?????
 def solution(arr):
-    result=0
-    for i in range(len(arr)):
-        cur_num=[]
-        if not 
-        
+    freq={}
+    for ch in arr:
+        if ch in freq:
+            freq[ch]+=1
+        else:
+            freq[ch]=1
+    result=[]
+    for i ,j in freq.items():
+        print(ke)
+                
 solution([1,2,3,4,1])  
 '''
 # 4.Sort in wave form
