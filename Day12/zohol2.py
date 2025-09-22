@@ -1,7 +1,7 @@
 # 14-sep 2025 questions
 #1. regex finding 1st occurance   ;
-'''input :  str=chcabbac, regex :cab*ac   ;output : cabbac
-notes:  a* ->a can occur 0 or more times ,a+ ->a can occur 1 or moretimes ;a ->a can occur atleast one time 
+# input :  str=chcabbac, regex :cab*ac   ;output : cabbac
+# notes:  a* ->a can occur 0 or more times ,a+ ->a can occur 1 or moretimes ;a ->a can occur atleast one time 
 
 def solution(str,regex):
     i=0
@@ -52,21 +52,36 @@ def solution(arr):
             even_ind+=1
     return result
 print(solution([1,5,2,6,4,6,3,7,9,8]))
-'''
-#3. sum based on frequency ,input:12341  ,output: 1-->9 ,2-->2         ?????
+
+#3. To provide the sum of the elements based on the occurance count ;
+# input:12341   ,   output: 1-->9 ,2-->2   ;    input:1,2,2,3,3,3,4,4,4,4  ,output: 1-->1 ,2-->4 ,3-->9 ,4-->16
 def solution(arr):
-    freq={}
-    for ch in arr:
-        if ch in freq:
-            freq[ch]+=1
+    res={}
+    for i in arr:
+        key,value=i,0
+        for j in range(len(arr)):
+            if arr[j]==i:
+                value+=1
+        res[key]=value
+
+    ress={}
+    for ke,va in res.items():
+        key,value=va,ke
+        if key in ress:
+            ress[key].append(value)
         else:
-            freq[ch]=1
+            ress[key]=[value]      
+    customized=dict(sorted(ress.items()))
     result=[]
-    for i ,j in freq.items():
-        print(ke)
-                
-solution([1,2,3,4,1])  
-'''
+    for i in customized:
+        vv=0
+        for j in customized[i]:
+            vv+=j
+        result.append(f"{i}-->{i*vv}")
+            
+    return result       
+print(solution([1,2,3,4,1]))  
+
 # 4.Sort in wave form
 def solution(arr):
     i=0
@@ -120,4 +135,3 @@ def solution(version1,version2):
     return 0
 
 print(solution("2.0.5","2.1.0.0"))
-'''
