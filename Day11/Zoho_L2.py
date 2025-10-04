@@ -1,5 +1,5 @@
 # Sept-12 questions
-
+'''
 # 1.Spiral matrix   - input:[[1,2,3],[4,5,6],[7,8,9]]  ;output: [123698745] 
 def solution(matrix):
     m=len(matrix)
@@ -27,7 +27,7 @@ def solution(matrix):
             left+=1
     return result
 print(solution([[1,2,3],[4,5,6],[7,8,9]]))   
-
+'''
 ''' 2.pattern printing   -  output:       1
                                       4 3 2
                                     9 8 7 6 5
@@ -56,7 +56,7 @@ def solution(n):
         print(" "*space+" ".join(line))
 
 print(solution(4))
-
+'''
 #3. decimal to binary number
 # with in-built function
 def deci_Binary(n):
@@ -173,7 +173,4 @@ def solution(n):
 for row in solution(2):
     print(row)
         
-
-
-
-
+'''

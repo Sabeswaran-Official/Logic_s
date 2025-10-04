@@ -1,4 +1,4 @@
-
+'''
 # 394. Decode string
 class decStr:
     def solution(string):
@@ -36,9 +36,9 @@ def solution(flowers):
         ways=flowers.count(min_height)*flowers.count(max_height)
 
     return beauty,ways
-print(solution([2,2,2,4,4,6,2,6,8]))
+print(solution([2,2,8,2,4,4,6,2,6,8]))
 
-
+'''
 # 54. Spiral matrix
 
 class spiralMatrix:
@@ -67,7 +67,7 @@ class spiralMatrix:
                     result.append(matrix[i][left])
                 left+=1
 
-            return result
+        return result 
 sm=spiralMatrix
-print(sm.solution([[1,2,3],[4,5,6],[7,8,9]]))
+print(sm.solution([[1,2,3],[4,5,6],[7,8,9],[10,11,12]]))
 

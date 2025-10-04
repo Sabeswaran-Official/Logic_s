@@ -1,5 +1,6 @@
 
 # 73. Set matrix zeros  
+'''
 class Solution:
     def solve(self, matrix):
         m, n = len(matrix), len(matrix[0])
@@ -136,7 +137,7 @@ print(sol.maxvalue([5,4,-1,7,8]))
 # .zfill(width) -- its a string method which just add zeros in a free space of left side;usefull in brute force(fixed length guesses)
 for i in range(5):
     print(str(i).zfill(3),end=" ")      # output :  000 001 002 003 004 
-
+'''
 # 1668. Maximum Repeating Substring
 class maxReapeat:
     def maxReapeatingSubstr(sequence,word):
@@ -147,7 +148,7 @@ class maxReapeat:
             repeated += word
         return count
 mm=maxReapeat
-print(mm.maxReapeatingSubstr("cababab","ab"))
+print(mm.maxReapeatingSubstr("cababab","a"))
 
 # Solution below using re -regex expression  
 import re
@@ -158,20 +159,21 @@ class maxReapeat:
         result="".join(matches)
         return f"{count} & the substring is {result}"
         
-        '''
-        n=len(word)
+
+
+        # n=len(word)
         
-        ind=[]
-        end=[]
-        for match in re.finditer(word,sequence):
-            ind.append(match.start())
-            end.append(match.end())
+        # ind=[]
+        # end=[]
+        # for match in re.finditer(word,sequence):
+        #     ind.append(match.start())
+        #     end.append(match.end())
         
-        x=ind[0]
+        # x=ind[0]
         
-        if  count>1:
-            print(f" {sequence[x:count*n+(n%2)+1]} is a substring of {sequence} ")    '''
+        # if  count>1:
+        #     print(f" {sequence[x:count*n+(n%2)+1]} is a substring of {sequence} ")   
         
         
 mm=maxReapeat
-print(mm.maxReapeatingSubstr("cabababa","ba"))
+print(mm.maxReapeatingSubstr("cabababa","a"))
