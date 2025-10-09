@@ -1,15 +1,17 @@
 # 14-sep 2025 questions
 #1. regex finding 1st occurance   ;
 # input :  str=chcabbac, regex :cab*ac   ;output : cabbac
-# notes:  a* ->a can occur 0 or more times ,a+ ->a can occur 1 or moretimes ;a ->a can occur atleast one time 
-
+# notes:  a* ->a can occur 0 or more times ,a+ ->a can occur 1 or moretimes ;a ->a can occur one time 
+'''
 def solution(str,regex):
     i=0
     pattern=""
     while i<len(regex):
+ 
         if regex[i]=="*":
             prev=regex[i-1]
             j=str.find(pattern)
+
             if j!=-1:
                 while j+len(pattern)<len(str) and str[j+len(pattern)]==prev:
                     pattern+=prev
@@ -34,7 +36,7 @@ def solution(str,regex):
     else:
         return None
 
-print(solution("chcabbac","cab+ac"))   
+print(solution("chcabbbbaaaace","cab*a+c*e"))   
 
 #2. Sort odd no.s in descending order & even no.s in ascending order  ;input - 1 5 2 6 4 6 3  ,output : 5 3 2 4 6 6 1
 def solution(arr):
@@ -58,20 +60,23 @@ print(solution([1,5,2,6,4,6,3,7,9,8]))
 def solution(arr):
     res={}
     for i in arr:
-        key,value=i,0
+        key,count=i,0
         for j in range(len(arr)):
-            if arr[j]==i:
-                value+=1
-        res[key]=value
-
+            if arr[j]==key:
+                count+=1
+        res[key]=count
+    print(res)
     ress={}
     for ke,va in res.items():
         key,value=va,ke
         if key in ress:
             ress[key].append(value)
         else:
-            ress[key]=[value]      
+            ress[key]=[value]  
+    print(ress)
     customized=dict(sorted(ress.items()))
+    print(customized)
+
     result=[]
     for i in customized:
         vv=0
@@ -81,6 +86,7 @@ def solution(arr):
             
     return result       
 print(solution([1,2,3,4,1]))  
+print(solution([1,2,3,4,1,4]))
 
 # 4.Sort in wave form
 def solution(arr):
@@ -97,7 +103,7 @@ def solution(arr):
     return arr
 
 print(solution([10,24,34,64,27,23,8]))
-
+'''
 # remove duplicates in a string ;   condition  :  keep the 1st occurance of alphabets * last occurance of numbers
 def solution(str):
     result=[]
@@ -118,7 +124,7 @@ def solution(str):
     return "".join(result)
 
 print(solution("abca12cf3124"))
-
+'''
 # comparing version numbers 
 def solution(version1,version2):
     ver1=list(map(int,version1.split(".")))
@@ -135,3 +141,5 @@ def solution(version1,version2):
     return 0
 
 print(solution("2.0.5","2.1.0.0"))
+'''
+

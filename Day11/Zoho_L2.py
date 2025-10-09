@@ -28,35 +28,56 @@ def solution(matrix):
     return result
 print(solution([[1,2,3],[4,5,6],[7,8,9]]))   
 '''
-''' 2.pattern printing   -  output:       1
+''' 2.pattern printing   -  output:     1
                                       4 3 2
                                     9 8 7 6 5
                                 16 15 14 13 12 11 10
                                 16 15 14 13 12 11 10
                                     9 8 7 6 5
                                       4 3 2
-                                        1         '''             
+                                        1            
 def solution(n):
-    spaces={1:8,2:6,3:4,4:0}
-    for i in range(1, n + 1):
-        start = (i - 1) ** 2 + 1
-        end = i ** 2
+    m=n//2
+    space=n+1
+
+    for i in range(1,m+1):
+        num=i**2
+        col_count=i*2
+    
+        print(" "*space,end="")
+        for j in range(1,col_count):
+            print(num,end=" ")
+            num-=1
+        print()
         
-        # Collect numbers in descending order
-        line = [str(x) for x in range(end, start - 1, -1)]
-        # Print with spacing for a pyramid shape
-        space=spaces.get(i)
-        print(" " *space+ " ".join(line))
-    for i in range(n,0,-1):
+        if i<3:
+            space-=2
+        if i==3:
+            space=0
+            x=m-4
+            space=space+(3*x)
+        if i>3:
+            space-=3
+    # space=0
+    # for i in range(m,0,-1):
+    #     num=i**2
+    #     col_count=i*2
+        
+    #     print(" "*space,end="")
+    #     for j in range(1,col_count):
+    #         print(num,end=" ")
+    #         num-=1
+    #     print()
+    #     if i>m-3:
+    #         space+=3
+    #     print(i,space)
+    #     if i==m-3:
+    #         space=n
+    #     if i<m-3:
+    #         space+=2
 
-        start=i**2
-        end=start-(i+i//2)
-        line=[str(i) for i in range(start,end-1,-1)]
-        space=spaces.get(i)
-        print(" "*space+" ".join(line))
+solution(8)   
 
-print(solution(4))
-'''
 #3. decimal to binary number
 # with in-built function
 def deci_Binary(n):
@@ -66,8 +87,7 @@ def deci_Binary(n):
     return res
 print(deci_Binary(28))  
 # without in-built func
-def solution(n):
-    num=n
+def solution(num):
     if num==0:
         return 0
     elif num==1:
@@ -78,7 +98,7 @@ def solution(n):
         binary=str(remainder)+binary
         num=num//2
     return binary
-print(solution(3))
+print(solution(28))
 
 #4. Max heights view only
 def solution(arr):
@@ -99,19 +119,19 @@ def solution(arr):
         if i not in values:
             values.append(i)
     
-    result=0
+    result=[]
     for i in range(len(values)):
         count=0
         for j in range(len(arr)):
             if values[i]==arr[j]:
                 count+=1
         if count==2:
-            result=result+values[i]
+            result.append(values[i])
         
     return result
             
-print(solution([1,3,2,1,2,4,1]))
-
+print(solution([1,3,2,1,2,4,1,2,3,4]))
+'''
 # 6.String segmentation badesd on dictionary of strings
 # {"I","like","Sam","sung","samsung","man","go","mango"}  ;input:"Ilike","IlikeSamsung" ,output:: I like ,I like Samsung
 
@@ -147,30 +167,5 @@ def solution(s, wordDict):
 
 print(solution("IlikeSamsung", {"I", "like", "Samsung","Sam", "sung", "man", "go", "mango"}))
 
-# pattern printing          
-def solution(n):
-    spaces={1:11,2:9,3:7,4:3,5:0}
-    num=1
-    res=[]
-    for i in range(1,n+1):
-        temp=[]
-        for j in range(1,i*2):
-            temp.append(num)
-            num+=1
-        space=spaces.get(i)
-        res.append(" "*space+" ".join(map(str,temp[::-1])))
-    
-    for i in range(n, 0, -1):
-        space = spaces.get(i, 0)
-        # extract numbers again for symmetry
-        start = (i - 1) ** 2 + 1
-        end = i ** 2
-        temp = list(range(start, end + 1))[::-1]
-        space=spaces.get(i)
-        res.append(" " * space + " ".join(map(str, temp)))
-
-    return res
-for row in solution(2):
-    print(row)
         
-'''
+ 
