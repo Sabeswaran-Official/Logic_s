@@ -30,7 +30,7 @@ def sol(a1,a2):
 arr1=[1,2,4,6,7,9] 
 arr2=[2,3,4,5,7,8,6,9]
 print(sol(arr1,arr2))
-'''
+
 # 3. Given 2 strings the 2nd str is present in 1st string in reverse ;return its index value
 # str1="I came by car" ; str2="emac" output :2 -the str2 present in str1 aat 2nd in reverse order
 str1="I was came by car"
@@ -45,6 +45,53 @@ def sol(a1,a2):
             ind+=i+1
             return ind
 print(sol(str1,str2))
-  
-# 4.convert numerical into words
 
+# 4.convert numerical into words
+# with in-build function
+from num2words import num2words
+print(num2words(235))
+print(num2words(1978,lang="fr"))   #in french
+print(num2words(1678935,to='currency',lang='es'))     #in spanish                 '''
+# without in-build function
+def num2word(num):
+    length=len(str(num))
+    if num==0:
+        return "Zero"
+    ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine","ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen","sixteen", "seventeen", "eighteen", "nineteen"]
+    tens = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    
+    def twoDigit(n):
+        if n<20:
+            return ones[n]
+        else:
+            return tens[n//10]+("" if n%10==0 else " "+ones[n%10])
+        
+    def threeDigit(n):
+        hundred=n//100
+        remainder=n%100
+        if hundred==0:
+            return twoDigit(remainder)
+        elif remainder==0:
+            return ones[hundred]+" hunderd"
+        else:
+            return ones[hundred]+ " hunderd and "+twoDigit(remainder)
+        
+    if num<100:
+        return twoDigit(num)
+    elif num<1000:
+        return threeDigit(num)
+    elif num<10000:
+        thousand=num//1000
+        remainder=num%1000
+        if remainder==0:
+            return ones[thousand]+" thousand"
+        else:
+            return ones[thousand]+" thousand and "+threeDigit(remainder)
+    else:
+        return "Number out of range"
+             
+print(num2word(279))
+
+# 5) given an expression, find whether duplicate bracket are present  ;Eg's : ((x+y)) - true ,  (x+y) - false ,  ((x+y)+((z))) - true ,  ((x+y)+(y+z)) - false
+
+    

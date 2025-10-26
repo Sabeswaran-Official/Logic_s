@@ -1,5 +1,5 @@
 # Sept -18 questions
-'''
+
 # 1.sum of two integers without + or -
 def solution(a,b):
     while b!=0:
@@ -25,8 +25,8 @@ def solution(n):
         return cur
 print(solution(8))   
 
- volume of water trapped in a 2-d height map
-   Sample Test Cases:
+# volume of water trapped in a 2-d height map
+'''  Sample Test Cases:
  Input:
  4 8
  8 8 8 8 6 6 6 6
@@ -53,7 +53,7 @@ print(solution(8))
 # Reads from stdin:
 # First line: m n
 # Next m lines: n integers each
-# Prints single integer: total trapped water
+# Prints single integer: total trapped water              '''
 
 def trap_rain_water_manual(heightMap):
     if not heightMap or not heightMap[0]:
@@ -153,15 +153,14 @@ def main():
 if __name__ == "__main__":
     main()
                       
-# Minimum cost to paint houses , Problem Statement: There are N houses in a row, and each house must be painted in one of three colors: red, green, or blue. The painting cost of each house with a certain color is provided in an N×3 matrix. The constraint is that no two adjacent houses can have the same color. Find the minimum
- total cost to paint all houses.
-  Sample Test Cases:
+# Minimum cost to paint houses , Problem Statement: There are N houses in a row, and each house must be painted in one of three colors: red, green, or blue. The painting cost of each house with a certain color is provided in an N×3 matrix. The constraint is that no two adjacent houses can have the same color. Find the minimum  total cost to paint all houses.
+'''Sample Test Cases:
  Input:               Input:                 Input :4
  3                     2                      3 2 7
  2 11 14                                      6 5 3
  11 5 13               5 7 8                  4 9 1
  14 15 7               9 4 6                  8 6 2
- Output:14            Output : 9             Output : 11
+ Output:14            Output : 9             Output : 11     '''
 
 def solution(n,arr):
     prev_red=arr[0][0]
@@ -181,8 +180,8 @@ def solution(n,arr):
 print(solution(4,[[9,4,6],[5,7,8],[8,6,2],[15,14,7]]))
 
 # 24 card game ; Problem Statement: You are given 4 distinct integers between 1 and 9 (inclusive). Using all four
- numbers exactly once, and using any combination of '+', '-', '*', '/' and parentheses, determine if it is
- possible to make the value 24. Print true if possible, otherwise false.  Inp:4 1 8 7,outp:True ; inp:1234,out:True ; inp:1112 ,out:false
+#  numbers exactly once, and using any combination of '+', '-', '*', '/' and parentheses, determine if it is
+#  possible to make the value 24. Print true if possible, otherwise false.  Inp:4 1 8 7,outp:True ; inp:1234,out:True ; inp:1112 ,out:false
 
 def solution(nums):
     if len(nums)<1:
@@ -226,4 +225,67 @@ def solution(nums):
 
 print(solution([1,4,6,2]))
 '''
-# conway game's of life
+# conway game's of life      Input:                 Input:             Input:
+                                    4 4                  3 3               2 2
+                                    1                    2                 5
+                                    1 0 1 0              0 1 0             
+                                    0 0 1 0              0 1 0             1 1
+                                    1 0 0 0              0 1 0             1 1
+                                    1 0 1 1              
+                                Output:               output:           output:
+                                    . x . .               . x .             x x
+                                    . . . .               . x .             x x
+                                    . . x x               . x .
+                                    . x . .
+
+'''
+def solution(m,n,G):
+    grid = []
+    for i in range(m):
+        row =list(map(int,input(f"Enter val fow row{i+1} :").split()))    #give input vals as  1 0 1 0
+        grid.append(row)
+    print(grid)
+    # Directions (8 neighbors)
+    dirs = [(-1,-1), (-1,0), (-1,1),
+            (0,-1),           (0,1),
+            (1,-1),  (1,0),  (1,1)]
+
+    # Process G generations
+    for gen in range(G):
+        # Make a new grid of zeros
+        new_grid = []
+        for i in range(m):
+            new_row = []
+            for j in range(n):
+                # Count alive neighbours
+                count = 0
+                for d in dirs:
+                    ni = i + d[0]
+                    nj = j + d[1]
+                    # Check boundary conditions
+                    if ni >= 0 and ni < m and nj >= 0 and nj < n:
+                        if grid[ni][nj] == 1:
+                            count += 1
+                # Apply rules
+                if grid[i][j] == 1:
+                    if count == 2 or count == 3:
+                        new_row.append(1)
+                    else:
+                        new_row.append(0)
+                else:
+                    if count == 3:
+                        new_row.append(1)
+                    else:
+                        new_row.append(0)
+            new_grid.append(new_row)
+        grid = new_grid  # Move to next generation
+
+    # Output in 'x' and '.'
+    for i in range(m):
+        for j in range(n):
+            if grid[i][j] == 1:
+                print('x', end=' ')
+            else:
+                print('.', end=' ')
+        print()
+solution(2,2,5)
