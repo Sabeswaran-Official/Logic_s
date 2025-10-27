@@ -51,10 +51,11 @@ print(sol(str1,str2))
 from num2words import num2words
 print(num2words(235))
 print(num2words(1978,lang="fr"))   #in french
-print(num2words(1678935,to='currency',lang='es'))     #in spanish                 '''
+print(num2words(1678935,to='currency',lang='es'))     #in spanish                 
 # without in-build function
+
 def num2word(num):
-    length=len(str(num))
+    
     if num==0:
         return "Zero"
     ones = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine","ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen","sixteen", "seventeen", "eighteen", "nineteen"]
@@ -69,9 +70,9 @@ def num2word(num):
     def threeDigit(n):
         hundred=n//100
         remainder=n%100
-        if hundred==0:
-            return twoDigit(remainder)
-        elif remainder==0:
+        # if hundred==0:
+        #     return twoDigit(remainder)
+        if remainder==0:
             return ones[hundred]+" hunderd"
         else:
             return ones[hundred]+ " hunderd and "+twoDigit(remainder)
@@ -90,8 +91,25 @@ def num2word(num):
     else:
         return "Number out of range"
              
-print(num2word(279))
-
+print(num2word(219))
+'''
 # 5) given an expression, find whether duplicate bracket are present  ;Eg's : ((x+y)) - true ,  (x+y) - false ,  ((x+y)+((z))) - true ,  ((x+y)+(y+z)) - false
 
-    
+def solution(str):
+    stack=[]
+    for i in str:
+        if i==")":
+            if not stack:    #check stackk is empty
+                return False
+            if stack[-1]=="(":
+                return True
+            while stack and stack[-1]!="(":
+                stack.pop()
+            if stack:         #check stackk is not empty
+                stack.pop()
+
+        else:
+            stack.append(i)
+    return False
+
+print(solution("((x+y))"))   
